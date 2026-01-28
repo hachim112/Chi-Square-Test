@@ -1,240 +1,177 @@
-# Chi-Square Test (KHI²) Using Python
+Chi-Square Test (KHI²) Using Python
 
-This project implements the **Chi-square (KHI²) goodness-of-fit test** using Python.  
-The objective is to determine whether categorical data follows a uniform distribution or if some categories are significantly more important than others.
+This project implements the Chi-square (KHI²) goodness-of-fit test using Python to analyze categorical data and determine whether observed frequencies differ significantly from expected frequencies under a specified hypothesis. The project also includes a visualization of the Chi-square distribution and the critical value.
 
-The project also includes a visualization of the Chi-square distribution and the critical value.
+Overview
 
----
+The Chi-square test is a widely used statistical method for categorical data — data that falls into categories rather than numeric measurements. It helps determine whether patterns in observed data can be explained by chance or whether they indicate a real effect.
 
-## 1. Introduction
+The Chi-square test can be used in different ways:
 
-The Chi-square (KHI²) test is a statistical method used to compare **observed frequencies** with **expected frequencies** under a given hypothesis.
+Goodness-of-fit test: Compares observed frequencies to expected frequencies.
 
-It is widely used when working with **categorical (qualitative) data**, such as survey results, choices, or classifications.
+Test of independence: Checks if two categorical variables are related.
 
----
+Test of homogeneity: Tests whether different samples come from the same distribution.
 
-## 2. Problem Description
+Problem Description
 
-A training center director wants to know which factor most influences students when choosing a training center.
+A sports training center wants to know which factor most influences students when choosing a training center.
 
-A group of 100 students were asked to choose one of the following factors:
+A group of 100 students were asked to choose the most important factor among:
 
-1. Success rate  
-2. Location  
-3. Coach  
-4. Training schedule  
+Success rate
+
+Location
+
+Coach
+
+Training schedule
 
 Observed frequencies:
 
-```
 [36, 34, 14, 16]
-```
 
----
 
-## 3. Objective
+The question is whether these differences occur by chance or reflect real preferences.
 
-Determine whether:
+Objective
 
-- All factors are equally important  
-OR  
-- One or more factors are more important than the others  
+The goal is to use the Chi-square goodness-of-fit test to determine whether:
 
-This is done using the Chi-square goodness-of-fit test.
+All factors are equally important
+OR
 
----
+At least one factor is significantly different
 
-## 4. Hypotheses
+Hypotheses
 
-Null Hypothesis (H0):  
-All factors have the same probability of being chosen.
+Null Hypothesis (H₀):
+All categories have the same probability (equal preference).
 
-Alternative Hypothesis (H1):  
-At least one factor has a different probability.
+Alternative Hypothesis (H₁):
+At least one category has a different probability.
 
----
+Statistical Background
+Expected Frequencies
 
-## 5. Theoretical Background
+If each category is equally likely, the expected frequency for each is:
 
-### 5.1 Expected Frequencies
-
-If all factors are equally important:
-
-```
-E = Total observations / Number of categories
+E = Total observations / Number of categories  
 E = 100 / 4 = 25
-```
 
-Each factor is expected to appear 25 times.
+Chi-Square Statistic
 
----
+The Chi-square statistic measures the total discrepancy between observed and expected values:
 
-### 5.2 Chi-square Statistic Formula
+KHI² = ∑ (Oi − Ei)² / Ei
 
-```
-KHI² = Σ ( (Oi - Ei)² / Ei )
-```
 
 Where:
 
-- Oi : Observed frequency  
-- Ei : Expected frequency  
+Oi = Observed frequency
 
----
+Ei = Expected frequency
 
-### 5.3 Degrees of Freedom
+Degrees of Freedom
 
-```
-df = k - 1
-df = 4 - 1 = 3
-```
+For k categories:
 
-Where k is the number of categories.
+df = k − 1
+df = 4 − 1 = 3
 
----
+Critical Value
 
-### 5.4 Critical Value
+For a significance level of α = 0.05 and df = 3, the critical Chi-square value from distribution tables is:
 
-For significance level:
-
-```
-α = 0.05
-df = 3
-```
-
-Critical value from Chi-square table:
-
-```
 χ²(0.05, 3) = 7.815
-```
 
----
-
-## 6. Manual Calculation
-
-```
-(36 - 25)² / 25 = 4.84
-(34 - 25)² / 25 = 3.24
-(14 - 25)² / 25 = 4.84
-(16 - 25)² / 25 = 3.24
+Manual Calculation
+(36 − 25)² / 25 = 4.84  
+(34 − 25)² / 25 = 3.24  
+(14 − 25)² / 25 = 4.84  
+(16 − 25)² / 25 = 3.24  
 
 KHI² = 4.84 + 3.24 + 4.84 + 3.24 = 16.16
-```
 
----
-
-## 7. Decision Rule
+Decision Rule
 
 If:
 
-```
-KHI²_calculated > KHI²_critical
-```
+KHI²_computed > KHI²_critical
 
-Then reject H0.
 
----
+Then reject H₀.
 
-## 8. Result
-
-```
-KHI²_calculated = 16.16
+Result
+KHI²_computed = 16.16  
 KHI²_critical = 7.815
-```
 
-Since:
 
-```
-16.16 > 7.815
-```
+Because 16.16 > 7.815, we reject the null hypothesis: the differences in category frequencies are unlikely to be due to chance.
 
-We reject the null hypothesis.
+Conclusion
 
----
+The Chi-square test shows a statistically significant difference between observed and expected frequencies. This indicates that the preference distribution across the four factors is not equal — some factors influence student choice more than others.
 
-## 9. Conclusion
+Python Implementation
 
-There is a significant relationship between factors and student choice.  
-Some factors influence the selection of the training center more than others.
+The Python script (code/KHItesting.py) performs the following:
 
----
+Stores the observed frequencies
 
-## 10. Python Implementation
+Computes the expected frequencies
 
-The Python program:
+Calculates the Chi-square statistic
 
-- Stores observed data  
-- Computes total and expected values  
-- Calculates KHI² statistic  
-- Computes degrees of freedom  
-- Finds critical value  
-- Prints the decision  
-- Draws the Chi-square distribution curve  
+Determines degrees of freedom
 
----
+Finds the critical value
 
-## 11. Visualization
+Outputs results and conclusion
 
-### KHI2 – Chi-square Distribution
+Plots the Chi-square distribution with the critical value
 
-![KHI2](KHI2.png)
+Visualization
+KHI² Distribution
 
-Explanation:
+This graph shows the Chi-square probability distribution and the critical value used for the test:
 
-- Blue curve: Chi-square distribution  
-- Red dashed line: Critical value (7.815)
+The curve shows the theoretical distribution for df = 3 while the vertical line marks the critical value at α = 0.05.
 
----
-
-## 12. Project Structure
-
-```
-KHI2-Test/
+Project Structure
+Chi-Square-Test/
 │
-├── KHItesting.py
-├── KHI2.png
-└── README.md
-```
+├── code/
+│   └── KHItesting.py         # Python script
+├── figures/
+│   └── KHI2.png              # Chi-square distribution plot
+├── README.md                 # This file
+└── requirements.txt
 
----
-
-## 13. Requirements
-
-```
+Requirements
 numpy
 scipy
 matplotlib
-```
 
----
+Installation
 
-## 14. Installation
+Install required libraries:
 
-```
 pip install numpy scipy matplotlib
-```
 
----
+Run the Program
 
-## 15. Run
+In the repository folder:
 
-```
-python KHItesting.py
-```
+python code/KHItesting.py
 
----
+Author
 
-## 16. Author
+Hachim Fernane
+Master Student – Computer Science
+University of Guelma
 
-Hachim Fernane  
-Master Student – Computer Science  
-University of Guelma  
+License
 
----
-
-## 17. License
-
-FEEL FREE TO USE JUST PRAY FOR ME
-
+This project is for educational and academic use only.
