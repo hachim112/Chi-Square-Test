@@ -188,7 +188,10 @@ Chi-Square-Test/
 ├── code/
 │   └── KHItesting.py         # Python script
 ├── figures/
-│   └── KHI2.png              # Chi-square distribution plot
+│   └── KHI2.png # Chi-square distribution plot
+├── docs/
+    ├── TP2_KHI2.pdf
+    └── Rapport_TP2_AFC_Hachim_Fernane.pdf         
 ├── README.md                 # This file
 └── requirements.txt
 ```
