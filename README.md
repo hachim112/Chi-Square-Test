@@ -1,6 +1,3 @@
-Here’s an **expanded and detailed README.md** for your **Chi-Square Test (KHI²)** repository that includes **additional explanations from the numiqo tutorial** about what a chi-square test is, when it’s used, and its applications — written in a clear way suitable for GitHub.
-
-You can **copy and paste the following into your `README.md` file**:
 
 ---
 
